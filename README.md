@@ -100,7 +100,7 @@ extension User : GrdbRecord {
         let name: String    = row[Columns.name]
         let locale: String? = row[Columns.locale]
         let demo: Bool?     = row[Columns.demo]
-        return User(id, name, Locale(identifier: locale), demo)
+        return User(id, name, Locale(identifier: locale ?? "en"), demo)
     }
 
 }

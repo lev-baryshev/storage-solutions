@@ -13,7 +13,7 @@ final class UserStorage {
     init?() {
         let sqlite: URL = folder/"UserStorage.sqlite" // path to database sqlite file
         let versions: [GrdbSchemaVersion] = [UserStorage.V01(), UserStorage.V02()] // migrations. (see schema version example below)
-        guard let database: GrdbStorage = .init(sqliteFile, versions, config) // (see config example below)
+        guard let database: GrdbStorage = .init(sqlite, versions, config) // (see config example below)
         else {
             return nil
         }

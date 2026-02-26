@@ -40,7 +40,7 @@ public extension Database {
         try query.fetchAll(self)
     }
 
-    func selectAll<Record:GrdbRecord>(_ type: Record.Type) throws -> [Record] {
+    func select<Record:GrdbRecord>(all type: Record.Type) throws -> [Record] {
         try Record.fetchAll(self)
     }
     
@@ -69,11 +69,11 @@ public extension Database {
         try Record.exists(self, id: id)
     }
 
-    func isThereNo<Record:GrdbRecord>(_ query: Query<Record>) throws -> Bool {
+    func isThere<Record:GrdbRecord>(no query: Query<Record>) throws -> Bool {
         try query.isEmpty(self)
     }
     
-    func isThereNo<Record>(_: Record.Type, with id: Record.ID) throws -> Bool
+    func isThere<Record>(no: Record.Type, with id: Record.ID) throws -> Bool
     where Record:(GrdbRecord & Identifiable), Record.ID:DatabaseValueConvertible {
         try Record.exists(self, id: id) == false
     }
@@ -82,7 +82,7 @@ public extension Database {
         try query.fetchCount(self)
     }
 
-    func countAll<Record:GrdbRecord>(_ type: Record.Type) throws -> Int {
+    func count<Record:GrdbRecord>(all type: Record.Type) throws -> Int {
         try Record.fetchCount(self)
     }
 
@@ -90,7 +90,7 @@ public extension Database {
         try query.deleteAll(self)
     }
 
-    func deleteAll<Record:GrdbRecord>(_ type: Record.Type) throws {
+    func delete<Record:GrdbRecord>(all type: Record.Type) throws {
         try type.deleteAll(self)
     }
 
